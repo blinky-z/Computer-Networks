@@ -177,7 +177,7 @@ Flow Control гарантирует, что sender не перегрузит rec
 - Acknowledgment of Multiple Segments - когда одним запросом с стороны receiver-а подтверждается сразу несколько пакетов, которые послал sender
 - Fluctuating Window Sizes For Flow Control - контроль размера окна для Back Pressure
 - Lost Transmissions - восстановление потерянных пакетов
-- Congestion Handling and Avoidance - контроль и избежание congestion (перегрузка сети)
+- Congestion Handling and Avoidance - контроль и избежание congestion (перегрузка сети). Например, TCP имеет в себе алгоритм ![exponential backoff](https://en.wikipedia.org/wiki/Exponential_backoff), чтобы избежать congestion
 
 #### Congestion
 
