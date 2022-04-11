@@ -44,43 +44,52 @@
 
 ---
 
-# Описание протоколов
+# MTU
 
-Далее разберем все важные и популярные протоколы, необходимые для понимания того, как работает интернет. Начнем с нижних уровней и будем подниматься наверх.
+*MTU (Maximum Transmission Unit)* - это максимальный размер PDU, который может обслужить другой хост на одном и том же уровне TCP/IP.
 
----
+Когда мы говорим о MTU, мы имеем в виду только *IP Layer*, если не сказано обратное.
 
-# Link Layer
+*Минимальное значение MTU*, заданное стандартом для протокола IP, равно 576 байт, поэтому гарантируется, что каждая сеть минимально может обработать пакет такого размера.
 
-Если честно, *Link Layer* не так необходим для понимания устройства работы сетей, поэтому я пропущу его.
+## IP Fragmentation
 
----
+Если общий размер IP пакета вместе с хэдерами больше MTU, то при передаче от сети с высоким MTU к сети с низким MTU, это сообщение фрагментируется в несколько IP фрагментов.
 
-# Internet Layer
-
-Здесь разбираю протоколы, используемые в *Сетевом уровне (Internet Layer)*.
-
-## IP
-
-### MTU, Fragmentation
-
-*MTU (Maximum Transmission Unit)* - это максимальный размер IP датаграммы, который может обслужить данная сеть. 
-
-Если общий размер пакета вместе с хэдерами больше MTU, то при передаче от сети с высоким MTU к сети с низким MTU, это сообщение фрагментируется в несколько IP фрагментов. Фрагментация плохая тем, что увеличивает нагрузку на сеть за счет большего количества пакетов, а также увеличивает размер overhead, так как вместо одного пакета с хэдерами появляется несколько с идентичными хэдерами.
-
-*Минимальное значение MTU*, заданное стандартом, равно 576 байт, поэтому гарантируется, что каждая сеть минимально может обработать пакет такого размера.
+Фрагментация IP датаграмм:
 
 ![IP Fragmentation](assets/ipmtu.png)
 
-### MTU Path Discovery
+Фрагментация плохая тем, что:
+1. Увеличивает нагрузку на сеть из-за большего количества пакетов
+2. Увеличивает overhead, так как вместо одного пакета с хэдерами появляется несколько с идентичными хэдерами
+
+## Tradeoffs
+
+- Большие MTU означают меньший overhead
+- Меньшие значения MTU означают меньший network delay
+
+Выдержка из Вики по трейдоффам при выборе размера MTU:
+
+> A larger MTU brings greater efficiency because each network packet carries more user data while protocol overheads, such as headers or underlying per-packet delays, remain fixed; the resulting higher efficiency means an improvement in bulk protocol throughput. A larger MTU also requires processing of fewer packets for the same amount of data. In some systems, per-packet-processing can be a critical performance limitation.
+
+> However, this gain is not without a downside. Large packets occupy a slow link for more time than a smaller packet, causing greater delays to subsequent packets, and increasing network delay and delay variation. For example, a 1500-byte packet, the largest allowed by Ethernet at the network layer, ties up a 14.4k modem for about one second.
+
+> Large packets are also problematic in the presence of communications errors. If no forward error correction is used, corruption of a single bit in a packet requires that the entire packet be retransmitted, which can be costly. At a given bit error rate, larger packets are more susceptible to corruption. Their greater payload makes retransmissions of larger packets take longer. Despite the negative effects on retransmission duration, large packets can still have a net positive effect on end-to-end TCP performance.[2]
+
+## MTU Path Discovery
 
 **MTU Path Discovery** - это процесс определения значения MTU на другой стороне сети. Нам требуется такая возможность, так как изначально сеть не знает значения MTU другой стороны, а также потому, что нам важно подобрать оптимальное значение MTU и по возможности как можно большее (так как чем больше IP датаграмма, тем меньше байтов тратятся на такой overhead как хэдеры для фрагментированных пакетов и тем больше мы можем передать полезных данных с минимальным overhead), удовлетворяющее обе сети, чтобы повысить производительность и избежать фрагментации данных.
 
 ---
 
-# Transport Layer
+# Описание протоколов
 
-Здесь разбираю протоколы, используемые в *Транспортном уровне (Transport Layer)*.
+Далее разберем все важные и популярные протоколы, необходимые для понимания того, как работает интернет.
+
+---
+
+# TCP/UDP
 
 ## TCP
 
@@ -118,7 +127,7 @@
 - Нет контроля перегрузок — UDP сам по себе не избегает перегрузок. Для приложений с большой пропускной способностью возможно вызвать коллапс перегрузок, если только они не реализуют меры контроля на прикладном уровне.
 
 ---
-  
+
 ## TCP Fundamentals
 
 Здесь разберу фундаментальные вещи TCP протокола.
@@ -239,9 +248,7 @@ Flow Control гарантирует, что sender не перегрузит rec
 
 ---
 
-# Link Layer. Internet Layer. Адресация пакетов
-
-Здесь разбираю Link и Internet Layer.
+# MAC. IP. Адресация пакетов
 
 Сетевые пакеты могут достичь пункта назначения только при наличии адреса доставки. В системе TCP/IP используется несколько схем адресации:
 - *Link layer:* Адреса MAC (Media Access Control) для использования в сетевом оборудовании
@@ -249,14 +256,22 @@ Flow Control гарантирует, что sender не перегрузит rec
 
 ---
 
-# Аппаратная адресация (MAC)
+# MAC
+
+**MAC** - это протокол для передачи пакетов на уровне сетевого оборудования.
+
+## MAC Address
 
 На канальном уровне - самом нижнем уровне адресации, где играют роль аппаратные средства - каждый сетевой интерфейс компьютера имеет **MAC адрес**, который отличает его от других компьютеров в сети. Например, Ethernet устройствам в процессе изготовления назначаются уникальные шестибайтовые аппаратные адреса. Эти адреса традиционно записываются в виде ряда двух шестнадцатеричных чисел, разделенных двоеточиями, например 00:50:8D:9A:3B:DF.
 В Ethernet-адресе первые 3 байта определяют изготовителя устройства, а последние три - выступают в качестве уникального серийного номера, назначаемого изготовителем. По первым 3 байтам можно выяснить марку устройства, поиска его в таблице идентификаторов изготовителей. Она расположена по адресу [http://www.iana.org/assignments/ethernet-numbers/ethernet-numbers.xhtml](http://www.iana.org/assignments/ethernet-numbers/ethernet-numbers.xhtml)
 
 ---
 
-# IP-Адресация
+# IP
+
+**Internet Protocol** - это протокол для передачи датаграмм на уровне хостов в сети.
+
+## IP Address
 
 **Internet Protocol address (IP address)** - это уникальный сетевой адрес устройства, подключенного к сети. IP адрес служит для двух целей: идентификация хоста (а точнее, сетевого интерфейса) и расположение хоста в сети.
 
