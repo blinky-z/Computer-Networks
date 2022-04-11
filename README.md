@@ -75,11 +75,13 @@
 
 > However, this gain is not without a downside. Large packets occupy a slow link for more time than a smaller packet, causing greater delays to subsequent packets, and increasing network delay and delay variation. For example, a 1500-byte packet, the largest allowed by Ethernet at the network layer, ties up a 14.4k modem for about one second.
 
-> Large packets are also problematic in the presence of communications errors. If no forward error correction is used, corruption of a single bit in a packet requires that the entire packet be retransmitted, which can be costly. At a given bit error rate, larger packets are more susceptible to corruption. Their greater payload makes retransmissions of larger packets take longer. Despite the negative effects on retransmission duration, large packets can still have a net positive effect on end-to-end TCP performance.[2]
+> Large packets are also problematic in the presence of communications errors. If no forward error correction is used, corruption of a single bit in a packet requires that the entire packet be retransmitted, which can be costly. At a given bit error rate, larger packets are more susceptible to corruption. Their greater payload makes retransmissions of larger packets take longer. Despite the negative effects on retransmission duration, large packets can still have a net positive effect on end-to-end TCP performance.
 
 ## MTU Path Discovery
 
-**MTU Path Discovery** - это процесс определения значения MTU на другой стороне сети. Нам требуется такая возможность, так как изначально сеть не знает значения MTU другой стороны, а также потому, что нам важно подобрать оптимальное значение MTU и по возможности как можно большее (так как чем больше IP датаграмма, тем меньше байтов тратятся на такой overhead как хэдеры для фрагментированных пакетов и тем больше мы можем передать полезных данных с минимальным overhead), удовлетворяющее обе сети, чтобы повысить производительность и избежать фрагментации данных.
+**MTU Path Discovery** - это процесс определения значения MTU на другой стороне сети. Нам требуется такой механизм, так как изначально сеть не знает значения MTU другой стороны, а также потому, что нам важно подобрать оптимальное значение MTU. 
+
+По возможности мы хотим иметь как можно большее MTU, так как чем больше IP датаграмма, тем больше мы можем передать полезных данных с минимальным overhead, удовлетворяющее обе сети, чтобы повысить производительность и избежать фрагментации данных.
 
 ---
 
