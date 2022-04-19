@@ -40,7 +40,7 @@
 
 ![img_1.png](assets/osi_vs_tcpip_model.png)
 
-Три верхних уровня в модели OSI не разделяются в TCP/IP (application layer, presentation layer и session layer) и объединены в Application Layer. Два нижних уровня в модели OSI также не разделяются в TCP/IP (link layer, physical layer) и объединены в Link Layer. Уровни Internet Layer и Transport Layer почти не изменены.
+Как мы видим, три верхних уровня в модели OSI не разделяются в TCP/IP (Application, Presentation и Session layer) и объединены в Application Layer. Два нижних уровня в модели OSI также не разделяются в TCP/IP (Data Link и Physical layer) и объединены в Link (Network Interface) Layer. Уровни Network и Transport мапятся 1 в 1.
 
 ---
 
