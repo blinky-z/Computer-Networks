@@ -66,11 +66,10 @@
 - Меньшие значения MTU означают меньший network delay
 
 Выдержка из Вики по трейдоффам при выборе размера MTU:
-
 > A larger MTU brings greater efficiency because each network packet carries more user data while protocol overheads, such as headers or underlying per-packet delays, remain fixed; the resulting higher efficiency means an improvement in bulk protocol throughput. A larger MTU also requires processing of fewer packets for the same amount of data. In some systems, per-packet-processing can be a critical performance limitation.
-
+>
 > However, this gain is not without a downside. Large packets occupy a slow link for more time than a smaller packet, causing greater delays to subsequent packets, and increasing network delay and delay variation. For example, a 1500-byte packet, the largest allowed by Ethernet at the network layer, ties up a 14.4k modem for about one second.
-
+>
 > Large packets are also problematic in the presence of communications errors. If no forward error correction is used, corruption of a single bit in a packet requires that the entire packet be retransmitted, which can be costly. At a given bit error rate, larger packets are more susceptible to corruption. Their greater payload makes retransmissions of larger packets take longer. Despite the negative effects on retransmission duration, large packets can still have a net positive effect on end-to-end TCP performance.
 
 ## MTU Path Discovery
