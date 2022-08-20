@@ -422,7 +422,8 @@ default         0.0.0.0 132.236.227.1    UG  1500  eth0
 
 ---
 
-# Источники:
+# Источники
+
 - [http://www.tcpipguide.com/index.htm](http://www.tcpipguide.com/index.htm)
 - [https://www.brianstorti.com/tcp-flow-control/](https://www.brianstorti.com/tcp-flow-control/)
 - [Книга Unix и Linux. Руководство системного администратора](https://www.labirint.ru/books/749458/)
