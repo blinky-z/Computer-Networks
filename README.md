@@ -1,6 +1,43 @@
 # Computer-Networks
 
-Заметки по изучению компьютерных сетей
+Заметки по изучению компьютерных сетей.
+
+Содержание:
+- [Internet protocol suite (TCP/IP)](#internet-protocol-suite-tcpip)
+	* [PDU, SDU](#pdu-sdu)
+	* [Модель OSI](#%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C-osi)
+- [MTU](#mtu)
+	* [IP Fragmentation](#ip-fragmentation)
+	* [Tradeoffs](#tradeoffs)
+	* [MTU Path Discovery](#mtu-path-discovery)
+- [Описание протоколов](#%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%D0%BE%D0%B2)
+- [TCP/UDP](#tcpudp)
+	* [TCP](#tcp)
+	* [UDP](#udp)
+	* [Отличия TCP от UDP](#%D0%BE%D1%82%D0%BB%D0%B8%D1%87%D0%B8%D1%8F-tcp-%D0%BE%D1%82-udp)
+	* [TCP Fundamentals](#tcp-fundamentals)
+		+ [Streams, Segments, MSS и Sequence Numbers](#streams-segments-mss-%D0%B8-sequence-numbers)
+		+ [MSS](#mss)
+		+ [Sequence Numbers](#sequence-numbers)
+		+ [Установка соединения (Handshake)](#%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D1%81%D0%BE%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F-handshake)
+			- [SYN Flood](#syn-flood)
+		+ [TCP Sliding window Acknowledgement system](#tcp-sliding-window-acknowledgement-system)
+		+ [Flow Control](#flow-control)
+		+ [Порядок и надежность данных, Retransmission, Multiple Segments Acknowledgment](#%D0%BF%D0%BE%D1%80%D1%8F%D0%B4%D0%BE%D0%BA-%D0%B8-%D0%BD%D0%B0%D0%B4%D0%B5%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-retransmission-multiple-segments-acknowledgment)
+		+ [Congestion](#congestion)
+- [MAC. IP. Адресация пакетов](#mac-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0%D1%86%D0%B8%D1%8F-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%BE%D0%B2)
+- [MAC](#mac)
+	* [MAC Address](#mac-address)
+- [IP](#ip)
+	* [IP Address](#ip-address)
+	* [Версии IP](#%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D0%B8-ip)
+	* [Подсети (Subnetworks)](#%D0%BF%D0%BE%D0%B4%D1%81%D0%B5%D1%82%D0%B8-subnetworks)
+	* [Анализ подсети](#%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7-%D0%BF%D0%BE%D0%B4%D1%81%D0%B5%D1%82%D0%B8)
+	* [Пример разделения на подсети](#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80-%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%BD%D0%B0-%D0%BF%D0%BE%D0%B4%D1%81%D0%B5%D1%82%D0%B8)
+	* [Публичные и приватные IP адреса](#%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B5-%D0%B8-%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%BD%D1%8B%D0%B5-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0)
+	* [Loopback Interface](#loopback-interface)
+	* [Маршрутизация](#%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F)
+- [Источники](#%D0%B8%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B8%D0%BA%D0%B8)
 
 # Internet protocol suite (TCP/IP)
 
