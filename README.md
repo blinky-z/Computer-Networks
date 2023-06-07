@@ -2,7 +2,7 @@
 
 Заметки по изучению компьютерных сетей.
 
-Содержание:
+**Содержание:**
 - [Internet protocol suite (TCP/IP)](#internet-protocol-suite-tcpip)
 - [OSI Model](#osi-model)
 - [PDU, SDU](#pdu-sdu)
