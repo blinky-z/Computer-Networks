@@ -1,6 +1,6 @@
 # Помощник в освоении компьютерных сетей
 
-<p style="text-align: center;"><b>[<a href="https://github.com/blinky-z/OS-Learn">Операционные системы</a>] | [Компьютерные сети] | [<a href="https://github.com/blinky-z/I-O-Book">I/O и сетевое программирование</a>]</b></p>
+<p align="center"><b>[<a href="https://github.com/blinky-z/OS-Learn">Операционные системы</a>] | [Компьютерные сети] | [<a href="https://github.com/blinky-z/I-O-Book">I/O и сетевое программирование</a>]</b></p>
 
 **Содержание:**
 - [Internet protocol suite (TCP/IP)](#internet-protocol-suite-tcpip)
