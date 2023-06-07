@@ -1,5 +1,7 @@
 # Помощник в освоении компьютерных сетей
 
+**\[[Операционные системы](https://github.com/blinky-z/OS-Learn)\] | \[Компьютерные сети\] | \[[I/O и сетевое программирование](https://github.com/blinky-z/I-O-Book)\]**
+
 **Содержание:**
 - [Internet protocol suite (TCP/IP)](#internet-protocol-suite-tcpip)
 - [OSI Model](#osi-model)
