@@ -1,6 +1,4 @@
-# Computer-Networks
-
-Заметки по изучению компьютерных сетей.
+# Помощник в освоении компьютерных сетей
 
 **Содержание:**
 - [Internet protocol suite (TCP/IP)](#internet-protocol-suite-tcpip)
